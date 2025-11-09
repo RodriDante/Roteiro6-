@@ -1,0 +1,38 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        float temperatura = 0;
+        bool temperaturaValida = false;
+
+        while (!temperaturaValida)
+        {
+            Console.Write("Digite a temperatura em Celsius: ");
+            string entrada = Console.ReadLine();
+
+            try
+            {
+                temperatura = ConverterParaCelsius(entrada);
+                temperaturaValida = true; 
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Valor invalido! Insira um numero valido.");
+            }
+        }
+
+        Console.WriteLine($"Temperatura valida: {temperatura} C");
+    }
+
+    public static float ConverterParaCelsius(string entrada)
+    {
+        if (!float.TryParse(entrada, out float resultado))
+        {
+            throw new FormatException("Entrada nao e um numero valido.");
+        }
+
+        return resultado;
+    }
+}

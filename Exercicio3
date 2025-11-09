@@ -1,0 +1,20 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.Write("Insira um numero inteiro: ");
+        string num1 = Console.ReadLine();
+
+        try
+        {
+            int numero = int.Parse(num1);
+            Console.WriteLine($"Voce digitou o numero: {numero}");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Valor invalido. Por favor, digite um numero inteiro.");
+        }
+    }
+}

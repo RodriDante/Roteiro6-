@@ -1,0 +1,45 @@
+
+using System;
+
+public class IdadeInvalidaException : Exception
+{
+    public IdadeInvalidaException(string mensagem) : base(mensagem)
+    {
+    }
+}
+
+public class Program
+{
+
+    public static void VerifIdade(int idade)
+    {
+        if (idade < 18)
+        {
+            throw new IdadeInvalidaException("Idade minima de 18 anos.");
+        }
+        else
+        {
+            Console.WriteLine("Acesso permitido.");
+        }
+    }
+
+    public static void Main()
+    {
+        Console.Write("Digite a idade: ");
+        string idadeIns = Console.ReadLine();
+
+        try
+        {
+            int idade = int.Parse(idadeIns);
+            VerifIdade(idade);
+        }
+        catch (IdadeInvalidaException ex)
+        {
+            Console.WriteLine($"Erro: {ex.Message}");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Entrada invalida. Insira um numero inteiro.");
+        }
+    }
+}

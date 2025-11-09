@@ -1,0 +1,49 @@
+using System;
+
+
+public class Program {
+
+    static void Main()
+    {
+    decimal preco = 0;
+        try
+        {
+            Console.Write("Qual o nome do produto? ");
+            string nome = Console.ReadLine();
+
+
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                throw new ArgumentException("O campo nao pode estar em branco");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("O campo nao pode estar em branco");
+            return;
+ }
+    
+         try
+        {
+            Console.Write("Digite o preco do produto: ");
+            string precoInput = Console.ReadLine();
+
+            if (!decimal.TryParse(precoInput, out preco))
+            {
+                throw new Exception("Erro: O preco deve ser um número válido.");
+            }
+
+            if (preco <= 0)
+            {
+                throw new Exception("Erro: O preco do produto deve ser maior que zero.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return; 
+        }
+
+       
+    }
+}
